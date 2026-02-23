@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="flex items-center gap-2">
         <Link href="/">
           <div
-            className={`flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gradient-to-r from-purple-100 to-blue-100 dark:hover:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900 ${isSelected("/") ? "bg-gradient-to-r from-purple-100 to-blue-100 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900" : ""}`}
+            className={`flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gradient-to-r from-purple-100 to-blue-100 dark:hover:bg-gradient-to-r dark:hover:from-purple-700 dark:hover:to-blue-700 ${isSelected("/") ? "bg-gradient-to-r from-purple-200 to-blue-200 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900" : ""}`}
           >
             <Image
               className="dark:invert"
@@ -42,14 +42,14 @@ export default function Navbar() {
         </Link>
         <Link href="/goasta">
           <div
-            className={`flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gradient-to-r from-purple-100 to-blue-100 dark:hover:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900 ${isSelected("/goasta") ? "bg-gradient-to-r from-purple-100 to-blue-100 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900" : ""}`}
+            className={`flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gradient-to-r from-purple-100 to-blue-100 dark:hover:bg-gradient-to-r dark:hover:from-purple-700 dark:hover:to-blue-700 ${isSelected("/goasta") ? "bg-gradient-to-r from-purple-200 to-blue-200 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900" : ""}`}
           >
             Goasta
           </div>
         </Link>
         <Link href="/squadre">
           <div
-            className={`flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gradient-to-r from-purple-100 to-blue-100 dark:hover:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900 ${isSelected("/squadre") ? "bg-gradient-to-r from-purple-100 to-blue-100 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900" : ""}`}
+            className={`flex items-center gap-2 px-2 py-1 rounded-md hover:bg-gradient-to-r from-purple-100 to-blue-100 dark:hover:bg-gradient-to-r dark:hover:from-purple-700 dark:hover:to-blue-700 ${isSelected("/squadre") ? "bg-gradient-to-r from-purple-200 to-blue-200 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900" : ""}`}
           >
             <Image
               className="dark:invert"
@@ -64,7 +64,7 @@ export default function Navbar() {
         <div className="w-[0.8px] h-10 bg-gray-300 dark:bg-gray-600"></div>
         <Button
           onClick={toggleTheme}
-          className="bg-gradient-to-r from-purple-300 to-blue-200 cursor-pointer hover:bg-gradient-to-r hover:from-purple-400 hover:to-blue-300 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900 dark:hover:bg-gradient-to-r dark:hover:from-purple-800 dark:hover:to-blue-800"
+          className="bg-gradient-to-r from-purple-200 to-blue-200 cursor-pointer hover:bg-gradient-to-r hover:from-purple-400 hover:to-blue-300 dark:bg-gradient-to-r dark:from-purple-900 dark:to-blue-900 dark:hover:bg-gradient-to-r dark:hover:from-purple-800 dark:hover:to-blue-800"
           size="icon"
         >
           <Image
