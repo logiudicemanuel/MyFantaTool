@@ -8,7 +8,7 @@ export default function Home() {
     <div className="min-h-full">
       {/* Hero Section */}
       <div className="flex flex-col gap-6 items-center justify-center min-h-[50vh] px-4 py-12 bg-gradient-to-br from-purple-100 via-indigo-50 to-blue-100 dark:from-purple-950 dark:via-slate-900 dark:to-blue-950 transition-all">
-        <Badge variant="secondary" className="px-4 py-1 gap-2 animate-fade-in">
+        <Badge variant="outline" className="px-4 py-1 gap-2 animate-fade-in">
           <BadgeCheck className="w-4 h-4 text-primary" />
           Gestisci la tua asta con stile
         </Badge>
