@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { Home, Users, Menu, X, Sun, Moon, Zap } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 const isSelected = (path: string, pathname: string) => {
   return pathname === path;
@@ -32,9 +33,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <h1 className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500 italic tracking-tighter hover:opacity-80 transition-opacity">
-                MyFantaTool
-              </h1>
+              <Image src="/logo.svg" alt="Logo" width={140} height={140} />
             </Link>
           </div>
 

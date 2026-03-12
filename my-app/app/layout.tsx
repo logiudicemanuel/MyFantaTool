@@ -4,10 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
-  variable: '--font-poppins-var',
-})
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "800"],
+  variable: "--font-poppins-var",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",

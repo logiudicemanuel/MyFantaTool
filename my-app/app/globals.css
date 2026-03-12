@@ -3,7 +3,7 @@
 @import "shadcn/tailwind.css";
 
 @theme {
-    --font-poppins: var(--font-poppins-var);
+  --font-poppins: var(--font-poppins-var);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
