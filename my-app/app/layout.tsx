@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col h-screen transition-colors duration-300`}
       >
         <Navbar />
         <div className="bg-gradient-to-br from-purple-100 to-blue-100 dark:bg-gradient-to-br dark:from-purple-900 dark:to-blue-900 flex-1 text-black dark:text-white overflow-auto">
