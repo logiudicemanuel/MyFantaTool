@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import MouseRadar from "@/components/MouseRadar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,8 +25,9 @@ export default function RootLayout({
       <body
         className={`font-poppins antialiased flex flex-col h-screen transition-colors duration-300`}
       >
+        <MouseRadar />
         <Navbar />
-        <div className="bg-gradient-to-br from-purple-100 to-blue-100 dark:bg-gradient-to-br dark:from-purple-900 dark:to-blue-900 flex-1 text-black dark:text-white overflow-auto">
+        <div className="flex-1 overflow-auto bg-[#eef7ff] text-black transition-colors duration-300 dark:bg-slate-950 dark:text-white">
           {children}
         </div>
       </body>

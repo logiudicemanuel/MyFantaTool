@@ -1,9 +1,89 @@
-import { BarChart3, LayoutDashboard, ShieldCheck } from "lucide-react";
+"use client";
+
+import type { PointerEvent } from "react";
+import { Database, List, Trophy, Users } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
-import CtaSection from "./CtaSection";
+
+const features = [
+  {
+    title: "La Mia Squadra",
+    description:
+      "Gestisci la tua rosa completa con visualizzazione tattica e statistiche dettagliate di ogni giocatore.",
+    action: "Vai alla Squadra",
+    icon: Trophy,
+    gradient: "from-red-500 to-red-800",
+    iconBackground: "bg-red-100 dark:bg-red-900/30",
+    iconColor: "text-red-600 dark:text-red-400",
+    buttonColor:
+      "text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300",
+    corners: ["feature-corner--top-left", "feature-corner--bottom-right"],
+  },
+  {
+    title: "Database Giocatori",
+    description:
+      "Consulta tutti i giocatori disponibili, organizzati per squadra, con statistiche complete per prepararti all'asta.",
+    action: "Esplora Database",
+    icon: Database,
+    gradient: "from-blue-500 to-blue-800",
+    iconBackground: "bg-blue-100 dark:bg-blue-900/30",
+    iconColor: "text-blue-600 dark:text-blue-400",
+    buttonColor:
+      "text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300",
+    corners: ["feature-corner--top-right", "feature-corner--bottom-left"],
+  },
+  {
+    title: "Gestione Asta",
+    description:
+      "Crea e gestisci liste personalizzate di giocatori suddivise per ruolo e priorità per la tua asta.",
+    action: "Gestisci Liste",
+    icon: List,
+    gradient: "from-green-500 to-green-800",
+    iconBackground: "bg-green-100 dark:bg-green-900/30",
+    iconColor: "text-green-600 dark:text-green-400",
+    buttonColor:
+      "text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300",
+    corners: ["feature-corner--top-right", "feature-corner--bottom-left"],
+  },
+  {
+    title: "Asta Live",
+    description:
+      "Simula un'asta live con timer, offerte in tempo reale e visualizzazione delle squadre in costruzione.",
+    action: "Simula Asta",
+    icon: Users,
+    gradient: "from-purple-500 to-purple-800",
+    iconBackground: "bg-purple-100 dark:bg-purple-900/30",
+    iconColor: "text-purple-600 dark:text-purple-400",
+    buttonColor:
+      "text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300",
+    corners: ["feature-corner--top-left", "feature-corner--bottom-right"],
+  },
+];
 
 export default function FeatureSection() {
+  const updateTilt = (event: PointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    const card = event.currentTarget.querySelector<HTMLElement>(
+      "[data-feature-card]",
+    );
+
+    if (card) {
+      card.style.transform = `rotateX(${-y * 12}deg) rotateY(${x * 16}deg) scale(1.04)`;
+    }
+  };
+
+  const resetTilt = (event: PointerEvent<HTMLDivElement>) => {
+    const card = event.currentTarget.querySelector<HTMLElement>(
+      "[data-feature-card]",
+    );
+
+    if (card) {
+      card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-20 flex flex-col items-center">
       <h2 className="text-3xl md:text-4xl font-bold mb-2">
@@ -13,85 +93,57 @@ export default function FeatureSection() {
         Tutto ciò che ti serve per una perfetta asta del fantacalcio
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-        <Card className="group h-fit py-0 flex flex-col border-none bg-white/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 overflow-hidden">
-          <div className="h-2 w-full bg-gradient-to-r from-purple-600 to-indigo-600"></div>
-          <CardContent className="flex flex-col gap-4 p-8 pt-0">
-            <div className="bg-purple-100 dark:bg-purple-900/30 w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-              <ShieldCheck className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-xl">Squadre Serie A</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Esplora tutte le squadre, formazioni probabili e statistiche
-                dettagliate dei giocatori per scegliere i tuoi top di reparto.
-              </p>
-            </div>
-            <Button
-              variant="ghost"
-              className="cursor-pointer w-fit p-0 h-auto text-purple-600 hover:text-purple-700 dark:text-purple-400 font-semibold group/btn"
-            >
-              Esplora{" "}
-              <span className="ml-1 group-hover/btn:translate-x-1 transition-transform">
-                →
-              </span>
-            </Button>
-          </CardContent>
-        </Card>
+      <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+        {features.map((feature) => {
+          const Icon = feature.icon;
 
-        <Card className="group h-fit py-0 flex flex-col border-none bg-white/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 overflow-hidden">
-          <div className="h-2 w-full bg-gradient-to-r from-blue-600 to-cyan-600"></div>
-          <CardContent className="flex flex-col gap-4 p-8 pt-0">
-            <div className="bg-blue-100 dark:bg-blue-900/30 w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-              <LayoutDashboard className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-xl">Gestione Asta</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Gestisci la tua asta in tempo reale, monitora il budget residuo
-                delle squadre e traccia i tuoi acquisti strategici.
-              </p>
-            </div>
-            <Button
-              variant="ghost"
-              className="cursor-pointer w-fit p-0 h-auto text-blue-600 hover:text-blue-700 dark:text-blue-400 font-semibold group/btn"
+          return (
+            <div
+              key={feature.title}
+              className="feature-card-shell group"
+              onPointerMove={updateTilt}
+              onPointerLeave={resetTilt}
             >
-              Esplora{" "}
-              <span className="ml-1 group-hover/btn:translate-x-1 transition-transform">
-                →
-              </span>
-            </Button>
-          </CardContent>
-        </Card>
+              <Card
+                data-feature-card
+                className="feature-card relative isolate flex h-full min-h-72 flex-col overflow-hidden border-none bg-white/70 py-0"
+              >
+                {feature.corners.map((position) => (
+                  <div
+                    key={position}
+                    className={`feature-corner absolute z-0 bg-gradient-to-br opacity-90 transition-transform duration-300 group-hover:scale-110 ${position} ${feature.gradient}`}
+                  />
+                ))}
 
-        <Card className="group h-fit py-0 flex flex-col border-none bg-white/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 overflow-hidden">
-          <div className="h-2 w-full bg-gradient-to-r from-emerald-600 to-teal-600"></div>
-          <CardContent className="flex flex-col gap-4 p-8 pt-0">
-            <div className="bg-emerald-100 dark:bg-emerald-900/30 w-12 h-12 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-              <BarChart3 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                <CardContent className="relative z-10 flex flex-1 flex-col gap-5 p-8">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-lg transition-transform group-hover:scale-110 ${feature.iconBackground}`}
+                  >
+                    <Icon className={`h-6 w-6 ${feature.iconColor}`} />
+                  </div>
+
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold">{feature.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  <Button
+                    variant="ghost"
+                    className={`group/btn mt-auto h-auto w-fit cursor-pointer p-0 font-semibold ${feature.buttonColor}`}
+                  >
+                    {feature.action}
+                    <span className="ml-1 transition-transform group-hover/btn:translate-x-1">
+                      →
+                    </span>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
-            <div className="space-y-2">
-              <h3 className="font-bold text-xl">Statistiche Live</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Visualizza statistiche avanzate in tempo reale e formazioni
-                aggiornate per ogni singola partita della stagione.
-              </p>
-            </div>
-            <Button
-              variant="ghost"
-              className="cursor-pointer w-fit p-0 h-auto text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 font-semibold group/btn"
-            >
-              Esplora{" "}
-              <span className="ml-1 group-hover/btn:translate-x-1 transition-transform">
-                →
-              </span>
-            </Button>
-          </CardContent>
-        </Card>
+          );
+        })}
       </div>
-
-      {/* CTA Section */}
-      <CtaSection />
     </div>
   );
 }
