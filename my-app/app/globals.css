@@ -2,11 +2,30 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@theme {
-  --font-poppins: var(--font-poppins-var);
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: var(--font-tilt-neon), sans-serif;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
+@layer utilities {
+  .app-font-body {
+    font-family: var(--font-tilt-neon), sans-serif;
+  }
+
+  .app-font-heading {
+    font-family: var(--font-titan-one), cursive;
+  }
+}
 
 .site-header {
   position: sticky;

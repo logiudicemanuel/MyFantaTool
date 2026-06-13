@@ -12,9 +12,9 @@ export default function SectionHero({
   titleGradientClass,
 }: SectionHeroProps) {
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col items-center justify-start px-6 py-12 text-center">
+    <main className="mx-auto flex h-[calc(100vh-45rem)] max-w-7xl flex-col items-center justify-start px-6 py-10 text-center">
       <h1
-        className={`animated-title-gradient ${titleGradientClass} w-fit bg-clip-text text-4xl font-bold text-transparent md:text-5xl`}
+        className={`animated-title-gradient app-font-heading ${titleGradientClass} w-fit bg-clip-text text-4xl font-bold text-transparent md:text-5xl`}
       >
         {title}
       </h1>

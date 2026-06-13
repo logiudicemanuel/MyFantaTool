@@ -13,7 +13,7 @@ export default function HeroSection() {
         Gestisci la tua asta con stile
       </Badge>
 
-      <h1 className="text-center text-4xl font-extrabold tracking-tight text-white drop-shadow-lg md:text-6xl">
+      <h1 className="app-font-heading text-center text-4xl font-extrabold tracking-tight text-white drop-shadow-lg md:text-6xl">
         MyFantaTool
       </h1>
 

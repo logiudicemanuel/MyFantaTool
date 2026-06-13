@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Tilt_Neon, Titan_One } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import MouseRadar from "@/components/MouseRadar";
 
-const poppins = Poppins({
+const tiltNeon = Tilt_Neon({
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
-  variable: "--font-poppins-var",
+  weight: "400",
+  variable: "--font-tilt-neon",
+});
+
+const titanOne = Titan_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-titan-one",
 });
 
 export const metadata: Metadata = {
@@ -21,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="it" className={`${tiltNeon.variable} ${titanOne.variable}`}>
       <body
-        className={`font-poppins antialiased flex flex-col h-screen transition-colors duration-300`}
+        className={`${tiltNeon.className} app-font-body antialiased flex flex-col h-screen transition-colors duration-300`}
       >
         <MouseRadar />
         <Navbar />

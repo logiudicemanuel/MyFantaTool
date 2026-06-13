@@ -10,7 +10,7 @@ export default function HomeQuickStart() {
             <Users className="w-8 h-8 text-purple-600 dark:text-purple-400" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-2xl">20</span>
+            <span className="app-font-body text-2xl font-semibold">20</span>
             <span className="text-sm text-muted-foreground">
               Squadre di serie A
             </span>
@@ -24,7 +24,7 @@ export default function HomeQuickStart() {
             <Gamepad2 className="w-8 h-8 text-blue-600 dark:text-blue-400" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-2xl">500+</span>
+            <span className="app-font-body text-2xl font-semibold">500+</span>
             <span className="text-sm text-muted-foreground">
               Giocatori disponibili
             </span>
@@ -38,7 +38,7 @@ export default function HomeQuickStart() {
             <Activity className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-2xl">Live</span>
+            <span className="app-font-body text-2xl font-semibold">Live</span>
             <span className="text-sm text-muted-foreground">Aggiornamenti</span>
           </div>
         </CardContent>

@@ -1,7 +1,8 @@
 "use client";
 
-import type { PointerEvent } from "react";
+import type { KeyboardEvent, PointerEvent } from "react";
 import { Database, List, Trophy, Users } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 
@@ -11,6 +12,7 @@ const features = [
     description:
       "Gestisci la tua rosa completa con visualizzazione tattica e statistiche dettagliate di ogni giocatore.",
     action: "Vai alla Squadra",
+    href: "/squadre",
     icon: Trophy,
     gradient: "from-red-500 to-red-800",
     iconBackground: "bg-red-100 dark:bg-red-900/30",
@@ -24,6 +26,7 @@ const features = [
     description:
       "Consulta tutti i giocatori disponibili, organizzati per squadra, con statistiche complete per prepararti all'asta.",
     action: "Esplora Database",
+    href: "/database",
     icon: Database,
     gradient: "from-blue-500 to-blue-800",
     iconBackground: "bg-blue-100 dark:bg-blue-900/30",
@@ -37,6 +40,7 @@ const features = [
     description:
       "Crea e gestisci liste personalizzate di giocatori suddivise per ruolo e priorità per la tua asta.",
     action: "Gestisci Liste",
+    href: "/goasta",
     icon: List,
     gradient: "from-green-500 to-green-800",
     iconBackground: "bg-green-100 dark:bg-green-900/30",
@@ -50,6 +54,7 @@ const features = [
     description:
       "Simula un'asta live con timer, offerte in tempo reale e visualizzazione delle squadre in costruzione.",
     action: "Simula Asta",
+    href: "/multiplayer",
     icon: Users,
     gradient: "from-purple-500 to-purple-800",
     iconBackground: "bg-purple-100 dark:bg-purple-900/30",
@@ -61,6 +66,8 @@ const features = [
 ];
 
 export default function FeatureSection() {
+  const router = useRouter();
+
   const updateTilt = (event: PointerEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
@@ -84,9 +91,19 @@ export default function FeatureSection() {
     }
   };
 
+  const handleKeyDown = (
+    event: KeyboardEvent<HTMLDivElement>,
+    href: string,
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      router.push(href);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-20 flex flex-col items-center">
-      <h2 className="text-3xl md:text-4xl font-bold mb-2">
+      <h2 className="app-font-body mb-2 text-3xl font-semibold md:text-4xl">
         Funzionalità generali
       </h2>
       <p className="text-muted-foreground mb-12 text-center">
@@ -100,9 +117,13 @@ export default function FeatureSection() {
           return (
             <div
               key={feature.title}
-              className="feature-card-shell group"
+              className="feature-card-shell group cursor-pointer"
               onPointerMove={updateTilt}
               onPointerLeave={resetTilt}
+              onClick={() => router.push(feature.href)}
+              onKeyDown={(event) => handleKeyDown(event, feature.href)}
+              role="link"
+              tabIndex={0}
             >
               <Card
                 data-feature-card
@@ -123,7 +144,9 @@ export default function FeatureSection() {
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold">{feature.title}</h3>
+                    <h3 className="app-font-body text-xl font-bold">
+                      {feature.title}
+                    </h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {feature.description}
                     </p>
@@ -131,7 +154,7 @@ export default function FeatureSection() {
 
                   <Button
                     variant="ghost"
-                    className={`group/btn mt-auto h-auto w-fit cursor-pointer p-0 font-semibold ${feature.buttonColor}`}
+                    className={`app-font-body group/btn mt-auto h-auto w-fit cursor-pointer p-0 font-semibold ${feature.buttonColor}`}
                   >
                     {feature.action}
                     <span className="ml-1 transition-transform group-hover/btn:translate-x-1">
